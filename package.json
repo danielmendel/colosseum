@@ -7,7 +7,9 @@
     "url": ""
   },
   "dependencies": {
-    "express": "3.x"
+    "express": "3.x",
+    "sockjs": "0.3.5"
+    "ejs": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
