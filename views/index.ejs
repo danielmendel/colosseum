@@ -12,25 +12,14 @@
     </head>
     <body>
 
-        <div class="header"></div>
-        <div class="container"></div>
-        <div class="footer"></div>
-
-        <!-- <script src="js/scripts.js"></script> -->
+        <div class="board">
+            <% for (var i = 0; i < 42; i++) { %>
+                <div id="c<%= i %>"></div>
+            <% } %>
+        </div>
 
         <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
-        <script>
-            var sock = new SockJS('/tunnel', undefined, {debug: true, devel: true});
-            sock.onopen = function() {
-                console.log('open');
-            };
-            sock.onmessage = function(e) {
-                console.log('message', e.data);
-            };
-            sock.onclose = function() {
-                console.log('close');
-            };
-        </script>
+        <script src="/js/script.js"></script>
 
     </body>
 </html>

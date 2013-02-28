@@ -1,1 +1,18 @@
 @import url('/css/reset.css');
+
+.board {
+    margin: 0 auto;
+    width: 420px;
+}
+.board div {
+    border: 1px solid #000;
+    float: left;
+    height: 58px;
+    width: 58px;
+}
+.r {
+    background: red;
+}
+.b {
+    background: black;
+}

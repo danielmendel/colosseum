@@ -16,9 +16,12 @@ app.configure(function(){
 
 sock.on('connection', function(conn){
     var spart = new Spart();
+    spart.socket.on('data', function(message) {
+        conn.write(message.toString());
+    });
     spart.connect('10.5.98.3', '4000', 'connectfour');
 	conn.on('data', function(message){
-		conn.write(message);
+        spart.move(parseInt(message));
 	});
 	conn.on('close', function(){});
 });
