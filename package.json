@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "express": "3.x",
-    "sockjs": "0.3.5"
+    "sockjs": "0.3.5",
     "ejs": "*"
   },
   "devDependencies": {},

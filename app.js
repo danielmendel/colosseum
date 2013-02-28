@@ -1,8 +1,10 @@
 var express = require('express')
-  , spart 	= require('./lib/spartacus')
+  , Spart 	= require('./lib/spartacus')
   , app     = express()
+  , http = require('http')
   , PORT 	= process.argv[2] || 3000
   , sock 	= require('sockjs').createServer()
+  , server = http.createServer(app)
 ;
 
 app.configure(function(){
@@ -13,17 +15,19 @@ app.configure(function(){
 });
 
 sock.on('connection', function(conn){
+    var spart = new Spart();
+    spart.connect('10.5.98.3', '4000', 'connectfour');
 	conn.on('data', function(message){
 		conn.write(message);
 	});
 	conn.on('close', function(){});
 });
 
-sock.installHandlers(app, {prefix:'/game'});
+sock.installHandlers(server, {prefix:'/tunnel'});
 
 app.get('/', function(req,res){
 	res.render('index');
 });
 
-app.listen(PORT);
+server.listen(PORT, '0.0.0.0');
 console.log('Listening on port '+PORT);

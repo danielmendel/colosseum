@@ -18,5 +18,19 @@
 
         <!-- <script src="js/scripts.js"></script> -->
 
+        <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+        <script>
+            var sock = new SockJS('/tunnel', undefined, {debug: true, devel: true});
+            sock.onopen = function() {
+                console.log('open');
+            };
+            sock.onmessage = function(e) {
+                console.log('message', e.data);
+            };
+            sock.onclose = function() {
+                console.log('close');
+            };
+        </script>
+
     </body>
 </html>
